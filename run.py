@@ -1,5 +1,5 @@
-#Random words
-import random
+#To randomise words and to add stages of the hangman one a life is lost
+import random, hangman_tries
 
 #Access to the list of words 
 from words import secret_word_list
