@@ -5,16 +5,30 @@ import random
 from words import secret_word_list
 
 #Game title 
-print("Hangman")
-print("-----------------------------")
+print("<>    <>     <><>     <>      <>    <>>>>>>    <>        <>     <><>     <>      <>")
+print("<>    <>    <>  <>    <>>>    <>   <>     <>   <>>>    <<<>    <>  <>    <>>>    <>")
+print("<><<>><>   <><<>><>   <>  <>  <>   <>          <>  <<>>  <>   <><<>><>   <>  <>  <>")
+print("<>    <>   <>    <>   <>    <<<>   <>  >>>>>   <>   <>   <>   <>    <>   <>    <<<>")
+print("<>    <>   <>    <>   <>      <>    <<<<<<     <>        <>   <>    <>   <>      <>")
+
+print("------------------------------------------------------------------------------------")
+print("------------------------------------------------------------------------------------")
 
 #Enter your name
 username = input("Please enter your name: ")
 print("\n")
 print(f"Welcome to Hangman {username}, lets get started!")
 
-# Select random word from secret word list
-def select_word(secret_word_list):
+def get_word(secret_word_list):
+    """
+    This function returns a random word from secret_word_list
+    """
     return random.choice(secret_word_list)
 
-print(select_word(secret_word_list))
+
+
+# def play_game(get_word)
+# secret_word = " _ " * len()
+
+print(get_word(secret_word_list))
+
