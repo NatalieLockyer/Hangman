@@ -1,7 +1,7 @@
 secret_word_list = [
     "abroad",
     "access",
-    "acting"
+    "acting",
     "agenda",
     "beauty",
     "battle",
