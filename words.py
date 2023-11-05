@@ -1,4 +1,4 @@
-secret_word_list [
+secret_word_list = [
     "abroad",
     "access",
     "acting"
