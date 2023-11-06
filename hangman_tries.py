@@ -6,6 +6,7 @@ def get_hangman_stage(tries):
     **READme Reference - for the stage design I have used codefather.tech.blog.com**
     """
     maximum_tries = 6
+    attempts_left = 6
     stages = ["""
         ------
         |    |
@@ -70,4 +71,4 @@ def get_hangman_stage(tries):
         |
     ------------
     """]
-    return stages[maximum_tries - tries]
+    return stages[maximum_tries - attempts_left]
