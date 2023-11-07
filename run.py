@@ -48,20 +48,20 @@ def display_secret_word(secret_random_word, guessed_letters):
     display = ' '.join([letter if letter in guessed_letters else ' _ ' for letter in secret_random_word])
     print(display)
 
-
-def guess_the_letter(display_secret_word):
+def guess_the_letter(guessed_letters, secret_random_word):
     """
     This function asks the user to guess a letter,
     if user has already used that letter - print - already been used
     wrong letter - print - incorrect letter
     correct letter - print - correct letter 
     """
-    guess = input("Please select a letter: ").lower()
-    
-    global attempts_left
-    global guessed
-
+    attempts_left = 6
+    guessed = False
     while not guessed and attempts_left > 0:
+        print(hangman_tries.get_hangman_stage(attempts_left))
+        display_secret_word(secret_random_word, guessed_letters)
+        guess = input("Please select a letter: ").lower()
+
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letter:
                 print("You have already guessed the letter", guess)
@@ -72,19 +72,21 @@ def guess_the_letter(display_secret_word):
             else:
                 print("Well done", guess, "is in the word.")
                 guessed_letter.append(guess)
-                letter_as_a_list = list(display_secret_word)
-                indices = [i for i, letter in enumerate(select_random_word) if letter == guess]
-                for index in indices:
-                    letter_as_a_list[index] = guess
-                display_secret_word = "".join(letter_as_a_list_list)
-                if " _ " not in display_secret_word:
+                if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
+                    print("Congratulations! You have guess the word correctly.")
+
+        else:
+            print("Invalid entry. Please enter a single alphabetic charactor.")
+    
+    if not guess:
+        print("Sorry, you have run out of attempts. The word was: ", secret_random_word)
 
 
 print(f"To begin, please choose your first letter. \n")
 secret_random_word = select_random_word(secret_word_list)   
-print(hangman_tries.get_hangman_stage(attempts_left))
-display_secret_word(secret_random_word)
+
+
     
 
 guess_the_letter(display_secret_word)
