@@ -63,7 +63,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
         guess = input("Please select a letter: ").lower()
 
         if len(guess) == 1 and guess.isalpha():
-            if guess in guessed_letter:
+            if guess in guessed_letters:
                 print("You have already guessed the letter", guess)
             elif guess not in secret_random_word:
                 print("The letter", guess, "is not in the word.")
@@ -83,13 +83,11 @@ def guess_the_letter(guessed_letters, secret_random_word):
         print("Sorry, you have run out of attempts. The word was: ", secret_random_word)
 
 
-print(f"To begin, please choose your first letter. \n")
-secret_random_word = select_random_word(secret_word_list)   
-
-
-    
-
-guess_the_letter(display_secret_word)
-
-#Calling the select random word and returning a random word       
-select_random_word(secret_word_list)
+def start_game():
+    """
+    """
+    player_name = welcome()
+    secret_random_word = select_randon_word(secret_word_list)
+    guessed_letters = []
+    print(f"The word has been chosen {player_name}. Lets play Hangman!")
+    guess_the_letter(guessed_letters, secret_random_word)
