@@ -8,14 +8,14 @@ import hangman_tries
 from words import secret_word_list
 
 # Game title 
-print("<>    <>     <><>     <>      <>    <>>>>>>    <>        <>     <><>     <>      <>")
-print("<>    <>    <>  <>    <>>>    <>   <>     <>   <>>>    <<<>    <>  <>    <>>>    <>")
-print("<><<>><>   <><<>><>   <>  <>  <>   <>          <>  <<>>  <>   <><<>><>   <>  <>  <>")
-print("<>    <>   <>    <>   <>    <<<>   <>  >>>>>   <>   <>   <>   <>    <>   <>    <<<>")
-print("<>    <>   <>    <>   <>      <>    <<<<<<     <>        <>   <>    <>   <>      <>")
+print("<>  <>   <><>   <>    <>   <>>>>  <>      <>   <><>  <>    <>")
+print("<>  >>  <>  <>  <>>   <>  <>      <><>  <><>  <>  <> <>>   <>")
+print("<><><>  <><><>  <> <> <>  <>      <>  <>  <>  <><><> <> <> <>")
+print("<>  <>  <>  <>  <>   <<>  <>  >>> <>      <>  <>  <> <>   <<>")
+print("<>  <>  <>  <>  <>    <>   <<<<   <>      <>  <>  <> <>    <>")
 
-print("------------------------------------------------------------------------------------")
-print("------------------------------------------------------------------------------------")
+print("--------------------------------------------------------------")
+print("--------------------------------------------------------------")
 
 #create a menu page with option
 #eg 1. Start a new game
@@ -68,13 +68,13 @@ def guess_the_letter(guessed_letters, secret_random_word):
             elif guess not in secret_random_word:
                 print("The letter", guess, "is not in the word.")
                 attempts_left -= 1
-                guessed_letter.append(guess)
+                guessed_letters.append(guess)
             else:
                 print("Well done", guess, "is in the word.")
-                guessed_letter.append(guess)
+                guessed_letters.append(guess)
                 if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
-                    print("Congratulations! You have guess the word correctly.")
+                    print("Congratulations! You have guessed the word correctly.")
 
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
@@ -87,7 +87,10 @@ def start_game():
     """
     """
     player_name = welcome()
-    secret_random_word = select_randon_word(secret_word_list)
+    secret_random_word = select_random_word(secret_word_list)
     guessed_letters = []
-    print(f"The word has been chosen {player_name}. Lets play Hangman!")
+    print(f"The secret word has been chosen for you {player_name}. Lets play!")
     guess_the_letter(guessed_letters, secret_random_word)
+
+if __name__ == "__main__":
+    start_game()
