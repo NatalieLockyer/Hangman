@@ -5,8 +5,6 @@ def get_hangman_stage(tries):
     The user will have a maximum of 6 lives. 
     **READme Reference - for the stage design I have used codefather.tech.blog.com**
     """
-    maximum_tries = 6
-    attempts_left = 6
     stages = ["""
         ------
         |    |
@@ -71,4 +69,4 @@ def get_hangman_stage(tries):
         |
     ------------
     """]
-    return stages[maximum_tries - attempts_left]
+    return stages[tries] #Use the number of tries left as the index

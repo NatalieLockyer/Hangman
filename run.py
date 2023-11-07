@@ -1,5 +1,8 @@
 # To randomise words and to add stages of the hangman one a life is lost
-import random, hangman_tries
+import random
+
+# Acces to hangman_tries.py
+import hangman_tries
 
 # Access to the list of words 
 from words import secret_word_list
@@ -14,11 +17,23 @@ print("<>    <>   <>    <>   <>      <>    <<<<<<     <>        <>   <>    <>   
 print("------------------------------------------------------------------------------------")
 print("------------------------------------------------------------------------------------")
 
-# Enter your name
-username = input("Please enter your name: ")
-print("\n")
-print(f"Welcome to Hangman {username}!\n")
+#create a menu page with option
+#eg 1. Start a new game
+#   2. Game instructions 
+#   3. exit the game
 
+def welcome():
+    """
+    This function asks the user to input their name
+    if user doesnt enter a character, an error
+    message will appear.
+    """
+    print("Welcome to Hangman!")
+    username = input("Please enter your name: ").strip()
+    while username == "":
+            username = input("You havent entered anything...Please enter your name:").strip()
+    print(f"Welcome to Hangman {username}!\n")
+    return username
 
 def select_random_word(secret_word_list):
     """
@@ -26,20 +41,12 @@ def select_random_word(secret_word_list):
     """
     return random.choice(secret_word_list)
 
-# Variables
-# Integer that represents the number of remaining attempts.
-attempts_left = 6
-# A string that contains the letters guessed by the user
-guessed_letter = []
-#
-guessed = False
-
-
-def display_secret_word(secret_random_word):
+def display_secret_word(secret_random_word, guessed_letters):
     """
     This function is to display the secret word, and replace the letters with underscores
     """
-    print(" _ " * len(secret_random_word))
+    display = ' '.join([letter if letter in guessed_letters else ' _ ' for letter in secret_random_word])
+    print(display)
 
 
 def guess_the_letter(display_secret_word):
