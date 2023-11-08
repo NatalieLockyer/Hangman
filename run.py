@@ -7,16 +7,6 @@ import hangman_tries
 # Access to the list of words 
 from words import secret_word_list
 
-# Game title 
-print("<>  <>   <><>   <>    <>   <>>>>  <>      <>   <><>  <>    <>")
-print("<>  >>  <>  <>  <>>   <>  <>      <><>  <><>  <>  <> <>>   <>")
-print("<><><>  <><><>  <> <> <>  <>      <>  <>  <>  <><><> <> <> <>")
-print("<>  <>  <>  <>  <>   <<>  <>  >>> <>      <>  <>  <> <>   <<>")
-print("<>  <>  <>  <>  <>    <>   <<<<   <>      <>  <>  <> <>    <>")
-
-print("--------------------------------------------------------------")
-print("--------------------------------------------------------------")
-
 #create a menu page with option
 #eg 1. Start a new game
 #   2. Game instructions 
@@ -28,6 +18,15 @@ def welcome():
     if user doesnt enter a character, an error
     message will appear.
     """
+    print("<>  <>   <><>   <>    <>   <>>>>  <>      <>   <><>  <>    <>")
+    print("<>  >>  <>  <>  <>>   <>  <>      <><>  <><>  <>  <> <>>   <>")
+    print("<><><>  <><><>  <> <> <>  <>      <>  <>  <>  <><><> <> <> <>")
+    print("<>  <>  <>  <>  <>   <<>  <>  >>> <>      <>  <>  <> <>   <<>")
+    print("<>  <>  <>  <>  <>    <>   <<<<   <>      <>  <>  <> <>    <>")
+
+    print("--------------------------------------------------------------")
+    print("--------------------------------------------------------------")
+
     print("Welcome to Hangman!")
     username = input("Please enter your name: ").strip()
     while username == "":
@@ -85,6 +84,16 @@ def guess_the_letter(guessed_letters, secret_random_word):
         print(hangman_tries.get_hangman_stage(attempts_left))
         end_game = True
         print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
+
+
+    while True:
+        play_again = input("Do you want to play again? Y or N ").lower()
+        if play_again not in ["y", "n"]:
+            print("Invalid input, please enter Y or N")
+        elif play_again == "y":
+            start_game()
+        else: 
+            print("Thank you for playing Hangman, I hope you enjoyed it!")
         
 
 
