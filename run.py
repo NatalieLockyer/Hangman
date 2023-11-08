@@ -31,7 +31,7 @@ def welcome():
     print("Welcome to Hangman!")
     username = input("Please enter your name: ").strip()
     while username == "":
-            username = input("You havent entered anything...Please enter your name:").strip()
+        username = input("You havent entered anything...Please enter your name:").strip()
     print(f"Welcome to Hangman {username}!\n")
     return username
 
@@ -82,8 +82,10 @@ def guess_the_letter(guessed_letters, secret_random_word):
             print("Invalid entry. Please enter a single alphabetic charactor.")
     
     if attempts_left == 0:
+        print(hangman_tries.get_hangman_stage(attempts_left))
         end_game = True
-        print("Unfortunately, you have run out of attempts. The word was: ", secret_random_word)
+        print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
+        
 
 
 def start_game():

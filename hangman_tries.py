@@ -6,7 +6,6 @@ def get_hangman_stage(tries):
     **READme Reference - for the stage design I have used codefather.tech.blog.com**
     """
     stages = [# Stages are now ordered from full hangman to none
-        # Stage 0: Final stage with full hangman
         """
             ------
             |    |
@@ -17,7 +16,6 @@ def get_hangman_stage(tries):
             |
         ------------
         """,
-        # Stage 1
         """
             ------
             |    |
@@ -27,8 +25,7 @@ def get_hangman_stage(tries):
             |   / \\
             |
         ------------
-        """,
-        # Stage 2
+        """,        
         """
             ------
             |    |
@@ -39,7 +36,6 @@ def get_hangman_stage(tries):
             |
         ------------
         """,
-        # Stage 3
         """
             ------
             |    |
@@ -50,7 +46,6 @@ def get_hangman_stage(tries):
             |
         ------------
         """,
-        # Stage 4
         """
             ------
             |    |
@@ -61,7 +56,6 @@ def get_hangman_stage(tries):
             |
         ------------
         """,
-        # Stage 5
         """
             ------
             |    |
@@ -72,7 +66,6 @@ def get_hangman_stage(tries):
             |
         ------------
         """,
-        # Stage 6: First stage with only the head
         """
             ------
             |    |
