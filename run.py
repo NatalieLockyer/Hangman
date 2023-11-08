@@ -1,7 +1,7 @@
 # To randomise words and to add stages of the hangman one a life is lost
 import random
 
-# Acces to hangman_tries.py
+# Access to hangman_tries.py
 import hangman_tries
 
 # Access to the list of words 
@@ -51,12 +51,14 @@ def display_secret_word(secret_random_word, guessed_letters):
 def guess_the_letter(guessed_letters, secret_random_word):
     """
     This function asks the user to guess a letter,
-    if user has already used that letter - print - already been used
+    if there is a duplicate letter - print - already been chosen 
     wrong letter - print - incorrect letter
     correct letter - print - correct letter 
     """
     attempts_left = 6
     guessed = False
+    end_game = False
+
     while not guessed and attempts_left > 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
         display_secret_word(secret_random_word, guessed_letters)
@@ -79,8 +81,9 @@ def guess_the_letter(guessed_letters, secret_random_word):
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
     
-    if not guess:
-        print("Sorry, you have run out of attempts. The word was: ", secret_random_word)
+    if attempts_left == 0:
+        end_game = True
+        print("Unfortunately, you have run out of attempts. The word was: ", secret_random_word)
 
 
 def start_game():
