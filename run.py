@@ -27,7 +27,8 @@ def welcome():
     print("--------------------------------------------------------------")
     print("--------------------------------------------------------------")
 
-    print("Welcome to Hangman!")
+    print( "Welcome to Hangman!")
+    
     username = input("Please enter your name: ").strip()
     while username == "":
         username = input("You havent entered anything...Please enter your name:").strip()
@@ -61,7 +62,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
     while not guessed and attempts_left > 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
         display_secret_word(secret_random_word, guessed_letters)
-        guess = input("Please select a letter: ").lower()
+        guess = input("\n Please select a letter: ").lower()
 
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
@@ -76,6 +77,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
                 if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
                     print("Congratulations! You have guessed the word correctly.")
+                    
 
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
@@ -94,9 +96,8 @@ def guess_the_letter(guessed_letters, secret_random_word):
             start_game()
         else: 
             print("Thank you for playing Hangman, I hope you enjoyed it!")
+            return
         
-
-
 def start_game():
     """
     """
