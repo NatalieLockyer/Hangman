@@ -7,6 +7,9 @@ import hangman_tries
 # Access to the list of words 
 from words import secret_word_list
 
+# Imports Gspread libary 
+# from spreadsheets import worksheet
+
 #create a menu page with option
 #eg 1. Start a new game
 #   2. Game instructions 
