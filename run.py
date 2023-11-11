@@ -1,4 +1,4 @@
-# To randomise words and to add stages of the hangman one a life is lost
+# To randomise words
 import random
 
 # Access to hangman_tries.py
@@ -10,16 +10,9 @@ from words import secret_word_list
 # Imports Gspread libary 
 # from spreadsheets import worksheet
 
-#create a menu page with option
-#eg 1. Start a new game
-#   2. Game instructions 
-#   3. exit the game
-
-def welcome():
+def main_page(game_instructions):
     """
-    This function asks the user to input their name
-    if user doesnt enter a character, an error
-    message will appear.
+    This function show the main menu of the page
     """
     print("<>  <>   <><>   <>    <>   <>>>>  <>      <>   <><>  <>    <>")
     print("<>  >>  <>  <>  <>>   <>  <>      <><>  <><>  <>  <> <>>   <>")
@@ -30,20 +23,65 @@ def welcome():
     print("--------------------------------------------------------------")
     print("--------------------------------------------------------------")
 
-    print( "Welcome to Hangman!")
-    
+    print("Welcome to Hangman!")
+    print("\nMain Menu")
+    print("1. Press 1 to start a New Game")
+    print("2. Press 2 for Game Instructions")
+    print("3. Press 3 to Exit the game")
+    while True:
+        option = input("\nPlease enter your selection (1, 2 or 3): ")
+        option = int(option)
+        if option > 3 or option < 1:
+            print("This is an invalid selection, Please enter 1, 2 or 3: ")
+            continue
+        return option
+
+   
+def game_instructions():
+    """
+    This functions shows the game instructions
+    when option 2 is selcted from the main menu
+    """
+    print("Hangman Instructions")
+    print("\n The object of the game is the guess the secret")
+    print("word, before the stick figure is hung.")
+    print("\n You will select letters from you keyboard to try and ")
+    print("and solve the word")
+    print("\n You have a limited number of goes, so think carefully")
+    print("\n Good Luck!!")
+    input("\n Press ENTER to continue")
+              
+def welcome():
+    """
+    This function asks the user to input their name
+    if user doesnt enter a character, an error
+    message will appear.
+    """
+      
     username = input("Please enter your name: ").strip()
     while username == "":
         username = input("You havent entered anything...Please enter your name:").strip()
     print(f"Welcome to Hangman {username}!\n")
     return username
 
+    menu_option = main_page
+    if menu_option == 3: 
+        end_game = True
+        print("Goodbye")
+    elif menu_option == 2:
+        game_instructions()
+        display_secret_word(secret_random_word, guessed_letters)
+    else:
+        start_game()
+    
+    
 def select_random_word(secret_word_list):
     """
     This function returns a random word from secret_word_list
     """
     return random.choice(secret_word_list)
 
+     
 def display_secret_word(secret_random_word, guessed_letters):
     """
     This function is to display the secret word, and replace the letters with underscores
@@ -100,6 +138,8 @@ def guess_the_letter(guessed_letters, secret_random_word):
         else: 
             print("Thank you for playing Hangman, I hope you enjoyed it!")
             return
+
+main_page(game_instructions)
         
 def start_game():
     """
@@ -112,3 +152,4 @@ def start_game():
 
 if __name__ == "__main__":
     start_game()
+
