@@ -10,22 +10,16 @@ from words import secret_word_list
 # To clear the screen
 import os
 
+from pyfiglet import Figlet
+
 # Imports Gspread libary 
 # from spreadsheets import worksheet
 
+font = Figlet(font='acrobatic')
+
 def main_page():
-    """
-    This function show the main menu of the page
-    """
-    print("<>  <>   <><>   <>    <>   <>>>>  <>      <>   <><>  <>    <>")
-    print("<>  >>  <>  <>  <>>   <>  <>      <><>  <><>  <>  <> <>>   <>")
-    print("<><><>  <><><>  <> <> <>  <>      <>  <>  <>  <><><> <> <> <>")
-    print("<>  <>  <>  <>  <>   <<>  <>  >>> <>      <>  <>  <> <>   <<>")
-    print("<>  <>  <>  <>  <>    <>   <<<<   <>      <>  <>  <> <>    <>")
-
-    print("--------------------------------------------------------------")
-    print("--------------------------------------------------------------")
-
+    clear()
+    print(font.renderText('Hangman'))
     print("Welcome to Hangman!")
     print("\nMain Menu")
     print("[1] To start a New Game")
@@ -35,7 +29,7 @@ def main_page():
     option = input("\nPlease enter your selection (1, 2, 3 or 4): ")
     if option in main_page_option.keys():
         loading = "Loading........\n"
-        print(f"You selected option {option}\n")
+        print(f"\nYou selected option {option}\n")
         return main_page_option[option]()
     else:       
         option > 4 or option < 1
@@ -115,21 +109,21 @@ def guess_the_letter(guessed_letters, secret_random_word):
     while not guessed and attempts_left > 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
         display_secret_word(secret_random_word, guessed_letters)
-        guess = input("\n Please select a letter: ").lower()
+        guess = input("\nPlease select a letter: ").lower()
 
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print("You have already guessed the letter", guess)
+                print("\nYou have already guessed the letter", guess)
             elif guess not in secret_random_word:
-                print("The letter", guess, "is not in the word.")
+                print("\nThe letter" , guess, "is not in the word.")            
                 attempts_left -= 1
                 guessed_letters.append(guess)
             else:
-                print("Well done", guess, "is in the word.")
+                print("\nWell done", guess, "is in the word.")
                 guessed_letters.append(guess)
                 if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
-                    print("Congratulations! You have guessed the word correctly.")
+                    print("\nCongratulations! You have guessed the word correctly.")
                     
 
         else:
@@ -146,6 +140,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
         if play_again not in ["y", "n"]:
             print("Invalid input, please enter Y or N")
         elif play_again == "y":
+            clear()
             start_game()
         else: 
             print("Thank you for playing Hangman, I hope you enjoyed it!")
@@ -171,7 +166,7 @@ main_page_option = dict({
     "1": start_game,
     "2": game_instructions,
     # "3": leaderboard,
-    # "4": exit
+    "4": exit
 })
 
 main_page()
