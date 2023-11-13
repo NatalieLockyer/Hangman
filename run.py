@@ -19,13 +19,18 @@ from pyfiglet import Figlet
 # To import Data Frames
 import pandas as pd
 
+# To import frame to put around game
+import tkinter as tk
+
 font = Figlet(font='acrobatic', justify='center')
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
+
 
 CREDS = Credentials.from_service_account_file('leaderboard.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -70,6 +75,7 @@ def game_instructions():
     clear()
     return main_page()
 
+
 def scoreboard_data():
     """
     Function for calling the data
@@ -87,8 +93,13 @@ def scoreboard_data():
     clear()
     return main_page()
 
-def score_data(guess_the_letter):
-    guess_the_letter()
+
+def update_scoreboard_data(scoreboard_data):
+    """
+    Function
+    """
+    
+    
 
 def welcome():
     """
@@ -203,6 +214,7 @@ main_page_option = dict({
     "3": scoreboard_data,
     "4": exit
 })
+
 
 main_page()
 
