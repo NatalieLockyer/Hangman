@@ -7,10 +7,13 @@ import hangman_tries
 # Access to the list of words 
 from words import secret_word_list
 
+# To clear the screen
+import os
+
 # Imports Gspread libary 
 # from spreadsheets import worksheet
 
-def main_page(game_instructions):
+def main_page():
     """
     This function show the main menu of the page
     """
@@ -25,32 +28,39 @@ def main_page(game_instructions):
 
     print("Welcome to Hangman!")
     print("\nMain Menu")
-    print("1. Press 1 to start a New Game")
-    print("2. Press 2 for Game Instructions")
-    print("3. Press 3 to Exit the game")
-    while True:
-        option = input("\nPlease enter your selection (1, 2 or 3): ")
-        option = int(option)
-        if option > 3 or option < 1:
-            print("This is an invalid selection, Please enter 1, 2 or 3: ")
-            continue
-        return option
-
-   
+    print("[1] To start a New Game")
+    print("[2] Game Instructions")
+    print("[3] Leaderboard")
+    print("[4] Exit the game")
+    option = input("\nPlease enter your selection (1, 2, 3 or 4): ")
+    if option in main_page_option.keys():
+        loading = "Loading........\n"
+        print(f"You selected option {option}\n")
+        return main_page_option[option]()
+    else:       
+        option > 4 or option < 1
+        print("This is an invalid selection, Please enter 1, 2, 3 or 4: ")
+        main_page()
+  
+  
 def game_instructions():
     """
     This functions shows the game instructions
     when option 2 is selcted from the main menu
     """
+    clear()
     print("Hangman Instructions")
-    print("\n The object of the game is the guess the secret")
+    print("\nThe object of the game is the guess the secret")
     print("word, before the stick figure is hung.")
-    print("\n You will select letters from you keyboard to try and ")
+    print("\nYou will select letters from your keyboard to try and ")
     print("and solve the word")
-    print("\n You have a limited number of goes, so think carefully")
-    print("\n Good Luck!!")
-    input("\n Press ENTER to continue")
-              
+    print("\nYou have a limited number of goes, so think carefully")
+    print("\nGood Luck!!")
+    input("\nPress ENTER to continue")
+    clear()
+    return main_page()
+
+             
 def welcome():
     """
     This function asks the user to input their name
@@ -61,19 +71,21 @@ def welcome():
     username = input("Please enter your name: ").strip()
     while username == "":
         username = input("You havent entered anything...Please enter your name:").strip()
-    print(f"Welcome to Hangman {username}!\n")
+    clear()
+    print(f"\nWelcome to Hangman {username}!\n")
     return username
 
     menu_option = main_page
-    if menu_option == 3: 
+    if menu_option == 4: 
         end_game = True
         print("Goodbye")
+    elif menu_option == 3:
+        leaderboard()
     elif menu_option == 2:
         game_instructions()
         display_secret_word(secret_random_word, guessed_letters)
     else:
         start_game()
-    
     
 def select_random_word(secret_word_list):
     """
@@ -139,8 +151,13 @@ def guess_the_letter(guessed_letters, secret_random_word):
             print("Thank you for playing Hangman, I hope you enjoyed it!")
             return
 
-main_page(game_instructions)
-        
+def clear():
+    """
+    This function is to clear the terminal
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def start_game():
     """
     """
@@ -149,6 +166,15 @@ def start_game():
     guessed_letters = []
     print(f"The secret word has been chosen for you {player_name}. Lets play!")
     guess_the_letter(guessed_letters, secret_random_word)
+
+main_page_option = dict({
+    "1": start_game,
+    "2": game_instructions,
+    # "3": leaderboard,
+    # "4": exit
+})
+
+main_page()
 
 if __name__ == "__main__":
     start_game()
