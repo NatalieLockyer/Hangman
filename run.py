@@ -1,3 +1,6 @@
+import gspread
+from google.oauth2.service_account import Credentials
+
 # To randomise words
 import random
 
@@ -10,16 +13,26 @@ from words import secret_word_list
 # To clear the screen
 import os
 
+# to Import Figlet
 from pyfiglet import Figlet
 
-# Imports Gspread libary 
-# from spreadsheets import worksheet
+font = Figlet(font='acrobatic', justify='center')
 
-font = Figlet(font='acrobatic')
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('leaderboard.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
 
 def main_page():
     clear()
-    print(font.renderText('Hangman'))
+    print(font.renderText('HANG'))
+    print(font.renderText('MAN'))
     print("Welcome to Hangman!")
     print("\nMain Menu")
     print("[1] To start a New Game")
@@ -28,7 +41,6 @@ def main_page():
     print("[4] Exit the game")
     option = input("\nPlease enter your selection (1, 2, 3 or 4): ")
     if option in main_page_option.keys():
-        loading = "Loading........\n"
         print(f"\nYou selected option {option}\n")
         return main_page_option[option]()
     else:       
@@ -54,14 +66,20 @@ def game_instructions():
     clear()
     return main_page()
 
-             
+# def get_leaderboard_data():
+#     """
+#     Funtion
+#     """
+#     SHEET = GSPREAD_CLIENT.open('hangman_leaderboard').sheet1
+#     data = SHEET.get_all_records()
+#     print(font.renderText("Leaderboard"))
+       
 def welcome():
     """
     This function asks the user to input their name
     if user doesnt enter a character, an error
     message will appear.
     """
-      
     username = input("Please enter your name: ").strip()
     while username == "":
         username = input("You havent entered anything...Please enter your name:").strip()
@@ -129,22 +147,22 @@ def guess_the_letter(guessed_letters, secret_random_word):
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
     
+
     if attempts_left == 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
         end_game = True
         print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
 
 
-    while True:
-        play_again = input("Do you want to play again? Y or N ").lower()
-        if play_again not in ["y", "n"]:
-            print("Invalid input, please enter Y or N")
-        elif play_again == "y":
-            clear()
-            start_game()
-        else: 
-            print("Thank you for playing Hangman, I hope you enjoyed it!")
-            return
+    play_again = input("\nDo you want to play again? Y or N ").lower()
+    if play_again not in ["y", "n"]:
+        print("Invalid input, please enter Y or N")
+    elif play_again == "y":
+        clear()
+        start_game()
+    else: 
+        print("Thank you for playing Hangman, I hope you enjoyed it!")
+        return main_page()            
 
 def clear():
     """
