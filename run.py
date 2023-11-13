@@ -13,8 +13,11 @@ from words import secret_word_list
 # To clear the screen
 import os
 
-# to Import Figlet
+# To Import Figlet
 from pyfiglet import Figlet
+
+# To import Data Frames
+import pandas as pd
 
 font = Figlet(font='acrobatic', justify='center')
 
@@ -29,6 +32,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
 
+
 def main_page():
     clear()
     print(font.renderText('HANG'))
@@ -37,7 +41,7 @@ def main_page():
     print("\nMain Menu")
     print("[1] To start a New Game")
     print("[2] Game Instructions")
-    print("[3] Leaderboard")
+    print("[3] Scoreboard")
     print("[4] Exit the game")
     option = input("\nPlease enter your selection (1, 2, 3 or 4): ")
     if option in main_page_option.keys():
@@ -47,8 +51,8 @@ def main_page():
         option > 4 or option < 1
         print("This is an invalid selection, Please enter 1, 2, 3 or 4: ")
         main_page()
-  
-  
+
+
 def game_instructions():
     """
     This functions shows the game instructions
@@ -66,20 +70,32 @@ def game_instructions():
     clear()
     return main_page()
 
-# def get_leaderboard_data():
-#     """
-#     Funtion
-#     """
-#     SHEET = GSPREAD_CLIENT.open('hangman_leaderboard').sheet1
-#     data = SHEET.get_all_records()
-#     print(font.renderText("Leaderboard"))
-       
+def scoreboard_data():
+    """
+    Function for calling the data
+    """
+    clear()
+    SHEET = GSPREAD_CLIENT.open('hangman_leaderboard').sheet1
+    data = SHEET.get_all_records()
+    data_frame = pd.DataFrame(data)
+    data_frame = data_frame.sort_values(by='guesses')
+    print(font.renderText("SCORE"))
+    print(font.renderText("BOARD"))
+    print(data_frame.to_string(columns=['username', 'guesses'],))
+
+    input("\nPress ENTER to return to continue to Main Page ")
+    clear()
+    return main_page()
+
+def score_data(guess_the_letter):
+    guess_the_letter()
+
 def welcome():
     """
     This function asks the user to input their name
     if user doesnt enter a character, an error
     message will appear.
-    """
+    """    
     username = input("Please enter your name: ").strip()
     while username == "":
         username = input("You havent entered anything...Please enter your name:").strip()
@@ -142,8 +158,8 @@ def guess_the_letter(guessed_letters, secret_random_word):
                 if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
                     print("\nCongratulations! You have guessed the word correctly.")
-                    
-
+            
+            
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
     
@@ -164,6 +180,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
         print("Thank you for playing Hangman, I hope you enjoyed it!")
         return main_page()            
 
+
 def clear():
     """
     This function is to clear the terminal
@@ -174,20 +191,21 @@ def clear():
 def start_game():
     """
     """
-    player_name = welcome()
+    username = welcome()
     secret_random_word = select_random_word(secret_word_list)
     guessed_letters = []
-    print(f"The secret word has been chosen for you {player_name}. Lets play!")
+    print(f"The secret word has been chosen for you {username}. Lets play!")
     guess_the_letter(guessed_letters, secret_random_word)
 
 main_page_option = dict({
     "1": start_game,
     "2": game_instructions,
-    # "3": leaderboard,
+    "3": scoreboard_data,
     "4": exit
 })
 
 main_page()
+
 
 if __name__ == "__main__":
     start_game()
