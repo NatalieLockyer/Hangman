@@ -58,6 +58,13 @@ def main_page():
         main_page()
 
 
+def exit_game():
+    """
+    This function will exit the user from the game.
+    """
+    print("Goodbye")
+    exit()
+
 
 def game_instructions():
     """
