@@ -104,7 +104,7 @@ def scoreboard_data():
     data_frame = data_frame.sort_values(by='guesses')
     print(font.renderText("SCORE"))
     print(font.renderText("BOARD"))
-    print(data_frame.to_string(columns=['username', 'guesses'],))
+    print(data_frame[['username', 'guesses']].to_string(index=False))
 
     input("\nPress ENTER to return to continue to Main Page\n")
     clear()
