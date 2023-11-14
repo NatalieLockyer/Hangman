@@ -140,10 +140,7 @@ def display_secret_word(secret_random_word, guessed_letters):
     """
     display = ' '.join([letter if letter in guessed_letters else ' _ ' for letter in secret_random_word])
     print(display)
-
-
     
-
 def guess_the_letter(guessed_letters, secret_random_word):
     """
     This function asks the user to guess a letter,
@@ -153,7 +150,6 @@ def guess_the_letter(guessed_letters, secret_random_word):
     """
     attempts_left = 6
     guessed = False
-    end_game = False
 
     while not guessed and attempts_left > 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
@@ -177,7 +173,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
             
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
-    
+   
 
     if attempts_left == 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
