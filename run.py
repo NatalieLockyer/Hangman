@@ -49,7 +49,7 @@ def main_page():
     }
     clear()
     print(font.renderText('HANGMAN'))
-    print("Welcome to Hang Man\n")
+    print("Welcome to Hangman!\n")
     print("Main Menu - To begin select number")
     print("[1] To start a New Game")
     print("[2] Game Instructions")
@@ -177,36 +177,38 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
             if guess in guessed_letters:
                 print("\nYou have already guessed the letter", guess)
             elif guess not in secret_random_word:
-                print("\nThe letter" , guess, "is not in the word.")            
+                print("\nThe letter", guess, "is not in the word.")            
                 attempts_left -= 1
                 guessed_letters.append(guess)
             else:
                 print("\nWell done", guess, "is in the word.")
                 guessed_letters.append(guess)
                 guesses += 1
-                if all (letter in guessed_letters for letter in secret_random_word):
+                if all(letter in guessed_letters for letter in secret_random_word):
                     guessed = True
                     print("\nCongratulations! You have guessed the word correctly.")
                     update_scoreboard_data(username, guesses, secret_random_word, guessed_letters)            
         else:
-            print("Invalid entry. Please enter a single alphabetic charactor.")
+            print("Invalid entry. Please enter a single alphabetic character.")
     
 
     if attempts_left == 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
-        print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
+        print("Unfortunately, you have run out of attempts. The word was: ", secret_random_word)
 
-    
-    play_again = input("\nDo you want to play again? Y or N\n").lower()
-    if play_again not in ["y", "n"]:
-        print("Invalid input, please enter Y or N")
-    elif play_again == "y":
-        clear()
-        start_game()
-    else:
-        print("Thank you for playing Hangman, I hope you enjoyed it!")
-        exit()           
-
+    while True:
+        play_again = input("\nDo you want to play again? Y or N\n").lower()
+        if play_again == "y":
+            clear()
+            start_game()
+            break
+        elif play_again == "n":
+            print("Thank you for playing Hangman, I hope you enjoyed it!")
+            exit()
+        else:
+            print("Invalid input, please enter Y or N")
+       
+        
 
 def clear():
     """
