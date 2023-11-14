@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "hangmanleaderboard23",
+  "private_key_id": "c52888c7e6652969a0d107dae2fc03a67a64a07a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDY1LV0pWTd2U4D\nWSJo6Oxr6RWwnNki1S2YKXo9YTUHohgP9pcJxR7D8sxbO4UaOGHubVqhL7AbsgPo\nB7eXfWjkckA/dpZMciJqKatPXAh6FA7KpWzcDD7mM1cLYOBPNFaMqwimtHnt6x+V\nTmMxAoQTaAZhDcwfQvfjZr7l2f8D8qGGFxxtfyZZHZ5JNFxugG/KLWZON13xIE4F\nnIk/e9yZy5ipFZ9H7OQVo/wLijGXxeoIMpqlYNJQrxngA5ONVGpoz7HkPs37jPPx\nFqj973KhYMjeY7lM98Sh4HZ7hMg7GoSFNy/004I7ox7/Eni9rYQxFwkDasTeuCkS\nnA4R563tAgMBAAECggEAPtQz2B7swVPsRRAY5mlHyGT7wfdQ+8Tlt0edgheetB2F\n92oujcguh/zctjri8JwR1HKfZkFZOE020I8b5auTL07jyv/jwTb5PeXhG9fBJQ6W\n0qVoi8KIn0+VE1j45jp2McCFezikdApDVpImL9dYyf7Eim7jDNPs3FmzSwsF1/B3\nyXeTWdeRJYFbwjMNIatqIjCdUQKs4nwLhVH8h1aznUkleZ8fMHsrWCiLi1NyBw0e\nSvhiy3r3L7LDls5GSdToStsgLLQLAPaVQv0ElVDYdpSyKmVNbCZcwsLIxCHFD/37\npsKE7SLJW6bfkYQ6KxK0+94Sd9lRuqGzi/HJ4OGmyQKBgQDv/hPyFCaqsZamQfKe\nFpFzEtOyGlFAB9ili8sCJN7P7chI05y6Auq8KPZI3oPSc2nbwmhhLydlPr8ZgWz4\nYROMgIUavhylDXO7STavWDziZg86a60VjEuPo4IlQkW/TaMCHqi9Ds4WN0IGHrue\nNuSS/PYJzeJrulnNE+2ngh2V2wKBgQDnSyRKR4L88pTWR0eThNEygoXK77aVxEav\n+s8oPD6yunQ+WjkRD3wh5OpCc4sBF+o0t/aGhQ5wulcO4W9BJZPoIQa9wp2KOISb\nLdfWrHITB6vr6Ls5v0YJkgQcO1eNxTnhS5ezbBPyk4rDZyZaoVtzVt48Thjy4KYa\nBlIBeUhp1wKBgQCxT6Mk48Z9rp+DTo4WRs5Hms1VdSQ6jpF+Hf5rIxqLvT6Qr+fH\ndog/ZHQx+lSilCrN9qBvzQrqPqWqDnmYOQDcecfdrkAzofCzmrAQdLzm+Eif/RXw\nKataAJATPxeQ86dP1Z8Nr3aL61+YbfRoPF48SzDspXR360KVxfd8HyIEqQKBgQDh\ntAjw10HytoIZbCtjwDsosAgBldS153gXaIfYuplwbdTbt81yYYr/xFP5jqj54y1w\nToiqkpMZ3CzyX3jiuNnRrtDWQmDbrfVxPNYgLd2Pxm+1YUG6w3WEB1ItfpccyHaH\n7O1XcEMy91l0/2aFEGqebgmmDYv5DtHoGXzS5ViNtwKBgHdA/BKixKOGCrSCyzYX\nJuSp8nr4CEZQ0zhOybQjkiQr7MmP7DNLOb4vCnY+8LyoglQ4VZQ+GL8/NwK+s30I\nCelfQPWtPnKBbdaBSoueqzgyLWybtaGmlAov/pKHE8E09n9GNK7XziGYccikfYkh\n3RjuTCqq0cakHgR4Q+PZKB6K\n-----END PRIVATE KEY-----\n",
+  "client_email": "hangmanleaderboard23@hangmanleaderboard23.iam.gserviceaccount.com",
+  "client_id": "100427644967870163374",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hangmanleaderboard23%40hangmanleaderboard23.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
