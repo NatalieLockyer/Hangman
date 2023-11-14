@@ -49,6 +49,7 @@ def main_page():
     }
     clear()
     print(font.renderText('HANGMAN'))
+    print("Welcome to Hang Man\n")
     print("Main Menu - To begin select number")
     print("[1] To start a New Game")
     print("[2] Game Instructions")
