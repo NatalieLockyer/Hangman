@@ -36,6 +36,11 @@ username = ""
 guesses = 0
 
 def main_page():
+    """
+    This function is the main page of the game. 
+    This holds the game Title, The 4 main menu options,
+    and asks the user for thier menu selection
+    """
     main_page_option = {
         "1": start_game,
         "2": game_instructions,
@@ -51,7 +56,7 @@ def main_page():
     print("[2] Game Instructions")
     print("[3] Scoreboard")
     print("[4] Exit the game")
-    option = input("\nPlease enter your selection (1, 2, 3, or 4): ")
+    option = input("\nPlease enter your selection (1, 2, 3, or 4):\n")
     if option in main_page_option:
         main_page_option[option]()
     else:
@@ -75,20 +80,22 @@ def game_instructions():
     clear()
     print(font.renderText('RULES'))
     print("\nHang Man is a word guessing game.")
-    print("\nThe object of the game is the guess the secret")
+    print("\nThe object of the game is to guess the secret")
     print("word, before the stick figure is hung.")
     print("\nYou will select letters from your keyboard to try and ")
     print("and solve the word.")
     print("\nYou have a limited number of goes, so think carefully")
     print("\nGood Luck!!")
-    input("\nPress ENTER to continue")
+    input("\nPress ENTER to continue\n")
     clear()
     return main_page()
 
 
 def scoreboard_data():
     """
-    Function for calling the data
+    This functions shows the scoreboard created in 
+    google sheets when option 2 is selcted from the 
+    main menu
     """
     clear()
     SHEET = GSPREAD_CLIENT.open('hangman_leaderboard').sheet1
@@ -99,14 +106,15 @@ def scoreboard_data():
     print(font.renderText("BOARD"))
     print(data_frame.to_string(columns=['username', 'guesses'],))
 
-    input("\nPress ENTER to return to continue to Main Page ")
+    input("\nPress ENTER to return to continue to Main Page\n")
     clear()
     return main_page()
 
 
 def update_scoreboard_data(username, guesses, secret_random_word, guessed_letters):
     """
-    Function to update the scoreboard with the username and number of guesses
+    This function is used to update the scoreboard in google sheets
+    with the username and number of guesses
     """
     if all(letter in guessed_letters for letter in secret_random_word):
         worksheet = SHEET.worksheet("sheet1")
@@ -116,15 +124,16 @@ def update_scoreboard_data(username, guesses, secret_random_word, guessed_letter
     
 def welcome():
     """
-    This function asks the user to input their name
+    This function appears once the user has selected option 1
+    to start a new game. It asks the user to input their name
     if user doesnt enter a character, an error
     message will appear.
     """
     global username
     if username == '':
-        username = input("Please enter your name: ").strip()
+        username = input("Please enter your name:\n").strip()
         while username == "":
-            username = input("You havent entered anything...Please enter your name:").strip()
+            username = input("You havent entered anything...Please enter your name:\n").strip()
         clear()
         print(f"\nWelcome to Hangman {username}!\n")
     else:
@@ -140,7 +149,8 @@ def select_random_word(secret_word_list):
 
 def display_secret_word(secret_random_word, guessed_letters):
     """
-    This function is to display the secret word, and replace the letters with underscores
+    This function is to display the secret word
+    and replace the letters with underscores
     """
     display = ' '.join([letter if letter in guessed_letters else ' _ ' for letter in secret_random_word])
     print(display)
@@ -151,7 +161,9 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
     This function asks the user to guess a letter,
     if there is a duplicate letter - print - already been chosen 
     wrong letter - print - incorrect letter
-    correct letter - print - correct letter 
+    correct letter - print - correct letter
+    Also includes a win message and lose message. 
+    Asks the player if they wish to play again
     """
     global guesses
     attempts_left = 6
@@ -160,7 +172,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
     while not guessed and attempts_left > 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
         display_secret_word(secret_random_word, guessed_letters)
-        guess = input("\nPlease select a letter: ").lower()
+        guess = input("\nPlease select a letter:\n").lower()
 
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
@@ -186,7 +198,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
         print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
 
     
-    play_again = input("\nDo you want to play again? Y or N ").lower()
+    play_again = input("\nDo you want to play again? Y or N\n").lower()
     if play_again not in ["y", "n"]:
         print("Invalid input, please enter Y or N")
     elif play_again == "y":
@@ -206,7 +218,9 @@ def clear():
 
 def start_game():
     """
-    ....
+    This function is called when the user is asked if they
+    wish to play again, if they select Y this function will 
+    be called.
     """
     welcome()
     secret_random_word = select_random_word(secret_word_list)
