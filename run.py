@@ -211,7 +211,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
 
 def clear():
     """
-    This function is to clear the terminal
+    This function is to clear the terminal.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
