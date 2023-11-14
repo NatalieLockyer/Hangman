@@ -28,14 +28,19 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-
 CREDS = Credentials.from_service_account_file('leaderboard.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
-
+username = ""
 
 def main_page():
+    main_page_option = {
+        "1": start_game,
+        "2": game_instructions,
+        "3": scoreboard_data,
+        "4": exit_game
+    }
     clear()
     print(font.renderText('HANG'))
     print(font.renderText('MAN'))
@@ -45,14 +50,13 @@ def main_page():
     print("[2] Game Instructions")
     print("[3] Scoreboard")
     print("[4] Exit the game")
-    option = input("\nPlease enter your selection (1, 2, 3 or 4): ")
-    if option in main_page_option.keys():
-        print(f"\nYou selected option {option}\n")
-        return main_page_option[option]()
-    else:       
-        option > 4 or option < 1
-        print("This is an invalid selection, Please enter 1, 2, 3 or 4: ")
+    option = input("\nPlease enter your selection (1, 2, 3, or 4): ")
+    if option in main_page_option:
+        main_page_option[option]()
+    else:
+        print("This is an invalid selection, Please enter 1, 2, 3, or 4: ")
         main_page()
+
 
 
 def game_instructions():
