@@ -177,9 +177,7 @@ def guess_the_letter(guessed_letters, secret_random_word):
 
     if attempts_left == 0:
         print(hangman_tries.get_hangman_stage(attempts_left))
-        end_game = True
         print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
-
 
     play_again = input("\nDo you want to play again? Y or N ").lower()
     if play_again not in ["y", "n"]:
@@ -187,10 +185,9 @@ def guess_the_letter(guessed_letters, secret_random_word):
     elif play_again == "y":
         clear()
         start_game()
-    else: 
+    else:
         print("Thank you for playing Hangman, I hope you enjoyed it!")
-        return main_page()            
-
+        exit() 
 
 def clear():
     """
@@ -201,24 +198,16 @@ def clear():
 
 def start_game():
     """
+    ....
     """
-    username = welcome()
+    welcome()
     secret_random_word = select_random_word(secret_word_list)
     guessed_letters = []
     print(f"The secret word has been chosen for you {username}. Lets play!")
     guess_the_letter(guessed_letters, secret_random_word)
 
-main_page_option = dict({
-    "1": start_game,
-    "2": game_instructions,
-    "3": scoreboard_data,
-    "4": exit
-})
-
-
-main_page()
-
-
+    
 if __name__ == "__main__":
+    main_page()
     start_game()
 
