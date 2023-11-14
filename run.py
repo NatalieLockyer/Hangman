@@ -87,7 +87,8 @@ def game_instructions():
 
 def scoreboard_data():
     """
-    Function for calling the data
+    Function for calling the data in Google Sheet, this includes 
+    username and how many guesses it took the user
     """
     clear()
     SHEET = GSPREAD_CLIENT.open('hangman_leaderboard').sheet1
@@ -109,32 +110,23 @@ def update_scoreboard_data(scoreboard_data):
     """
     
     
-
 def welcome():
     """
     This function asks the user to input their name
     if user doesnt enter a character, an error
     message will appear.
-    """    
-    username = input("Please enter your name: ").strip()
-    while username == "":
-        username = input("You havent entered anything...Please enter your name:").strip()
-    clear()
-    print(f"\nWelcome to Hangman {username}!\n")
-    return username
-
-    menu_option = main_page
-    if menu_option == 4: 
-        end_game = True
-        print("Goodbye")
-    elif menu_option == 3:
-        leaderboard()
-    elif menu_option == 2:
-        game_instructions()
-        display_secret_word(secret_random_word, guessed_letters)
+    """
+    global username
+    if username == '':
+        username = input("Please enter your name: ").strip()
+        while username == "":
+            username = input("You havent entered anything...Please enter your name:").strip()
+        clear()
+        print(f"\nWelcome to Hangman {username}!\n")
     else:
-        start_game()
-    
+        print(f"\nWelcome back to Hangman, {username}!\n")
+
+        
 def select_random_word(secret_word_list):
     """
     This function returns a random word from secret_word_list
