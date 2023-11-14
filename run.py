@@ -104,14 +104,15 @@ def scoreboard_data():
     return main_page()
 
 
-def update_scoreboard_data(username, guesses):
+def update_scoreboard_data(username, guesses, secret_random_word, guessed_letters):
     """
     Function to update the scoreboard with the username and number of guesses
     """
-    worksheet = SHEET.worksheet("sheet1")
-    new_row = [username, str(guesses)] 
-    worksheet.append_row(new_row)
-    
+    if all(letter in guessed_letters for letter in secret_random_word):
+        worksheet = SHEET.worksheet("sheet1")
+        new_row = [username, guesses] 
+        worksheet.append_row(new_row)
+        
     
 def welcome():
     """
@@ -175,8 +176,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
                 if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
                     print("\nCongratulations! You have guessed the word correctly.")
-            
-            
+                    update_scoreboard_data(username, guesses, secret_random_word, guessed_letters)            
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
     
@@ -185,8 +185,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
         print(hangman_tries.get_hangman_stage(attempts_left))
         print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
 
-    update_scoreboard_data(username, guesses)
-
+    
     play_again = input("\nDo you want to play again? Y or N ").lower()
     if play_again not in ["y", "n"]:
         print("Invalid input, please enter Y or N")
