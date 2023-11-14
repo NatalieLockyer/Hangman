@@ -19,7 +19,7 @@ from pyfiglet import Figlet
 # To import Data Frames
 import pandas as pd
 
-font = Figlet(font='acrobatic', justify='center')
+font = Figlet(font='banner', justify='center')
 
 
 SCOPE = [
