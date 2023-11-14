@@ -19,9 +19,6 @@ from pyfiglet import Figlet
 # To import Data Frames
 import pandas as pd
 
-# To import frame to put around game
-import tkinter as tk
-
 font = Figlet(font='acrobatic', justify='center')
 
 
@@ -64,11 +61,12 @@ def game_instructions():
     when option 2 is selcted from the main menu
     """
     clear()
-    print("Hangman Instructions")
+    print(font.renderText('RULES'))
+    print("\nHang Man is a word guessing game.")
     print("\nThe object of the game is the guess the secret")
     print("word, before the stick figure is hung.")
     print("\nYou will select letters from your keyboard to try and ")
-    print("and solve the word")
+    print("and solve the word.")
     print("\nYou have a limited number of goes, so think carefully")
     print("\nGood Luck!!")
     input("\nPress ENTER to continue")
@@ -139,6 +137,9 @@ def display_secret_word(secret_random_word, guessed_letters):
     """
     display = ' '.join([letter if letter in guessed_letters else ' _ ' for letter in secret_random_word])
     print(display)
+
+
+    
 
 def guess_the_letter(guessed_letters, secret_random_word):
     """
