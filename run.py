@@ -19,7 +19,7 @@ from pyfiglet import Figlet
 # To import Data Frames
 import pandas as pd
 
-font = Figlet(font='acrobatic', justify='center')
+font = Figlet(font='acrobatic', justify='center', width = 75)
 
 
 SCOPE = [
@@ -48,10 +48,8 @@ def main_page():
         "4": exit_game
     }
     clear()
-    print(font.renderText('HANG'))
-    print(font.renderText('MAN'))
-    print("Welcome to Hangman!")
-    print("\nMain Menu")
+    print(font.renderText('HANGMAN'))
+    print("Main Menu - To begin select number")
     print("[1] To start a New Game")
     print("[2] Game Instructions")
     print("[3] Scoreboard")
