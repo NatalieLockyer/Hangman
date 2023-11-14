@@ -33,14 +33,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
 username = ""
+guesses = 0
 
 def main_page():
-    main_page_option = {
-        "1": start_game,
-        "2": game_instructions,
-        "3": scoreboard_data,
-        "4": exit_game
-    }
     clear()
     print(font.renderText('HANG'))
     print(font.renderText('MAN'))
@@ -51,10 +46,17 @@ def main_page():
     print("[3] Scoreboard")
     print("[4] Exit the game")
     option = input("\nPlease enter your selection (1, 2, 3, or 4): ")
-    if option in main_page_option:
-        main_page_option[option]()
+    
+    if option == "1":
+        start_game()
+    elif option == "2":
+        game_instructions()
+    elif option == "3":
+        scoreboard_data()
+    elif option == "4":
+        exit_game()
     else:
-        print("This is an invalid selection, Please enter 1, 2, 3, or 4: ")
+        print("This is an invalid selection. Please enter 1, 2, 3, or 4.")
         main_page()
 
 
@@ -90,24 +92,30 @@ def scoreboard_data():
     Function for calling the data in Google Sheet, this includes 
     username and how many guesses it took the user
     """
+    global username, guesses
     clear()
     SHEET = GSPREAD_CLIENT.open('hangman_leaderboard').sheet1
     data = SHEET.get_all_records()
     data_frame = pd.DataFrame(data)
-    data_frame = data_frame.sort_values(by='guesses')
+    username_column = "username"
+    guesses_column = "guesses"
     print(font.renderText("SCORE"))
     print(font.renderText("BOARD"))
-    print(data_frame.to_string(columns=['username', 'guesses'],))
-
+    print(data_frame.to_string(columns=[username_column, guesses_column]))
+  
     input("\nPress ENTER to return to continue to Main Page ")
     clear()
     return main_page()
 
 
-def update_scoreboard_data(scoreboard_data):
+def update_scoreboard_data():
     """
-    Function
+    Function to update the scoreboard with the username and number of guesses
     """
+    global username, guesses
+    worksheet = SHEET.worksheet("sheet1")
+    new_row = [username, guesses]
+    worksheet.append_row(new_row)
     
     
 def welcome():
@@ -141,13 +149,14 @@ def display_secret_word(secret_random_word, guessed_letters):
     display = ' '.join([letter if letter in guessed_letters else ' _ ' for letter in secret_random_word])
     print(display)
     
-def guess_the_letter(guessed_letters, secret_random_word):
+def guess_the_letter(username, guessed_letters, secret_random_word):
     """
     This function asks the user to guess a letter,
     if there is a duplicate letter - print - already been chosen 
     wrong letter - print - incorrect letter
     correct letter - print - correct letter 
     """
+    global guesses
     attempts_left = 6
     guessed = False
 
@@ -166,16 +175,17 @@ def guess_the_letter(guessed_letters, secret_random_word):
             else:
                 print("\nWell done", guess, "is in the word.")
                 guessed_letters.append(guess)
+                guesses += 1
                 if all (letter in guessed_letters for letter in secret_random_word):
                     guessed = True
                     print("\nCongratulations! You have guessed the word correctly.")
-            
-            
+                
         else:
             print("Invalid entry. Please enter a single alphabetic charactor.")
    
 
     if attempts_left == 0:
+        update_scoreboard_data(username, 6 - attempts_left)
         print(hangman_tries.get_hangman_stage(attempts_left))
         print("Unfortunately, you have run out of attempts. The word was: ",secret_random_word)
 
@@ -189,25 +199,28 @@ def guess_the_letter(guessed_letters, secret_random_word):
         print("Thank you for playing Hangman, I hope you enjoyed it!")
         exit() 
 
+update_scoreboard_data()
+
 def clear():
     """
     This function is to clear the terminal
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
 def start_game():
     """
-    ....
     """
+    global username, guesses
+    username = ""
+    guesses = 0
     welcome()
     secret_random_word = select_random_word(secret_word_list)
     guessed_letters = []
-    print(f"The secret word has been chosen for you {username}. Lets play!")
-    guess_the_letter(guessed_letters, secret_random_word)
+    print(f"The secret word has been chosen for you, {username}. Let's play!")
+    guess_the_letter(secret_random_word, guessed_letters)
 
     
 if __name__ == "__main__":
     main_page()
-    start_game()
+    
 
