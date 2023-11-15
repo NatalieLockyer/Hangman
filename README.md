@@ -1,11 +1,16 @@
-# [Hang Man] (........input link.............)
+# [Hang Man](https://hang-man2023-457c30e677c0.herokuapp.com/)
+
+(Developer: Natalie Lockyer)
+## Demo
+[To view live website, click here](https://hang-man2023-457c30e677c0.herokuapp.com/)
+
+![Responsive Image](./assets/images/readme_imgs/responsive_img.png)
 
 Hang Man is a word guessing game, based on the original 'Hangman'. The game has been designed to give users a limited number of lives to guess the secret word. The secret word is displayed as underscores ( _ _ _ ) .When a player guesses the letter correctly, the letter appears in the word which is displayed under the diagram. If they guess the letter in correctly, a life will be lost and a part of the stick man will dispaly on the diagram. Once the game has finished users will be given the oppurtunity to play again.
 
-## Demo
-[To view live website, click here] ........................
 
-![Responsive Image]( add link )
+
+
 
 # Contents
 + [User Experience](#user-experience)

@@ -207,8 +207,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
             exit()
         else:
             print("Invalid input, please enter Y or N")
-       
-        
+              
 
 def clear():
     """
