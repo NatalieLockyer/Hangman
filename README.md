@@ -18,31 +18,31 @@ Hang Man is a word guessing game, based on the original 'Hangman'. The game has 
     + [User Requirements and Expectations](#user-requirements-and-expectations)
     + [User Stories](#user-stories)
     + [Lucid Chart](#lucid-chart)
-+ [Design ]
++ [Design]
     + [Typography ](#typography)
-+ [Features ]
-     + [Main Start Page ](#main-start-page)
-     + [Game Instructions Page ](#game-instructions-page)
-     + [Scoreboard Page ](#scoreboard-page)
-     + [Exit Page ](#exit-page)
-     + [Start New Game Page ](#start-new-game-page)
-     + [Lose Screen Page ](#lose-screen-page)
-     + [Win Screen Page ](#win-screen-page)
-     + [Goodbye Page ](#goodbye-page)
++ [Features]
+     + [Main Start Page](#main-start-page)
+     + [Game Instructions Page](#game-instructions-page)
+     + [Scoreboard Page](#scoreboard-page)
+     + [Exit Page](#exit-page)
+     + [Start New Game Page](#start-new-game-page)
+     + [Lose Screen Page](#lose-screen-page)
+     + [Win Screen Page](#win-screen-page)
+     + [Goodbye Page](#goodbye-page)
      + [Future Features](#future-features)
-  + [Technologies Used]
-    + [Languages Used]
-    + [Frameworks Used]
-+ [Testing ]
-  + [Validator Testing]
-  + [Lighthouse Testing]
-  + [Problems Encountered]
-  + [Responsiveness ]
+  + [Technologies Used](#technologies-used)
+    + [Languages Used](#language)
+    + [Frameworks Used](#frameworks-and-tools)
+    + [Python Libraries](#python-libraries)
+    + [My Python Files ](#my-python-files)
++ [Testing](#testing)
+  + [Code Validation](#code-validation)
   + [Full Testing ]
- + [Deployment and Local Deployment]
-  + [Deployment ]
-  + [Local Deployment]
-  + [How to Clone]
+  + [Bugs ]
+ + [Deployment and Local Deployment](#deployment-and-local-deployment)
+  + [Deployment](#deployment)
+  + [Local Deployment](#local-deployment)
+  + [How to Clone](#how-to-clone)
 + [Credits ]
   + [Code ]
   + [Media ]
@@ -234,15 +234,98 @@ In the futures I would like to add the following features:
 
 ## Technologies Used
 
-### Language
+### Languages Used
 * Python
 
-### Frameworks and Tools
+### Frameworks and Tools Used
 
-* GitHub
-* Gitpod
-* Heroku
-* Lucid Chart
+* [GitHub](https://github.com/)
+* [Gitpod](https://www.gitpod.io/)
+* [Heroku](https://www.heroku.com/)
+* [Lucid Chart](https://www.google.com/aclk?sa=l&ai=DChcSEwi_ssP0o8aCAxXZ2u0KHdQVDoIYABAAGgJkZw&ase=2&gclid=CjwKCAiA9dGqBhAqEiwAmRpTC9XQpJ9OWzIc524kVooNZVo5X8skE08NPqZvjIx4EuTylHyAzyvJSRoCpIIQAvD_BwE&sig=AOD64_1_4moP4TC2Y08_lDNJTfJdGFTwmA&q&nis=4&adurl&ved=2ahUKEwjz3bv0o8aCAxXgXEEAHbzQD5wQ0Qx6BAgOEAE)
+* [Prettier Code Formatter](https://prettier.io/)
+* [CI Linter Code Checker](https://pep8ci.herokuapp.com/)
+
+### Python Libraries
+* [random](https://docs.python.org/3/library/random.html) was imported to randomise the words
+* [os](https://docs.python.org/3/library/os.html) was imported to keep the terminal looking clear
+* [panda](https://www.w3schools.com/python/pandas/default.asp) was imported to utilise data frames
+* [Figlet](https://pypi.org/project/pyfiglet/) was imported to amend the font style
+
+Third party python modules that were imported and used are:
+* gspread was imported and this library of code was used to access and update the data in the spreadshhet
+* google.oauth2.service_account was used to authorise the connecion with Google Sheets API. 
+
+### My Python Files
+* 'hangman_tries' is a file where the structure of the hangman and the lives lost diagrams are stored. This has been imported to the run.py sheet.
+* 'words' is a file where the secret words are stored. This has been imported to the run.py sheet. 
+
+## Testing
+
+### Code Validation 
+
+PEP 8 is a style guide for python.
+
+The result of my page was clear, no errors found when page run through the CI Python Linter
+
+<p align="center">
+<img src="./assets/images/readme_imgs/pythonlinter_mainpy.png">
+</p>
+
+The result of my page was clear, no errors found when page run through the CI Python Linter
+
+<p align="center">
+<img src="./assets/images/readme_imgs/pythonlinter_hangmanpy.png">
+</p>
+
+The result of my page was clear, no errors found when page run through the CI Python Linter
+
+<p align="center">
+<img src="./assets/images/readme_imgs/pythonlinter_wordspy.png">
+</p>
+
+
+bugs etc
+
+
+
+## Deployment and Local Deployment
+
+### Deployment 
+
+All code was written within GitPod development environment. I used GitHub for version control and was finally deployed to Heroku from GitHub.
+
+To deploy this site on Heroku the following steps were performed:
+
+After the initial account setup
+* Click the "create new app" button on heroku
+* Create a unique name for the app
+* Select region (Europe was selected for this project)
+* Click "create app"
+* Go to settings tab
+* Set config vars using the creds1.json file. In the field for key, "CREDS1" should be entered and in the field for value, the entire creds1.json file content is entered
+* Then click "add buildpack"
+* Use python and nodejs buildpacks
+* The buildpack order should be python on top and nodejs underneath
+* Go to the deploy tab
+* Select the deployment method (github was used for this project)
+* Search for the github repository name ( In this instance I selected Hangman)
+* Then click on Connect
+* There is an option to use manual deployment or automatic deployment. Make sure main branch is selected
+* After the first deployment you will see a message saying "your app was successfully deployed" and there will be a "view" button to take you to your deployed application
+
+### Local Deployment
+  How to Fork 
+  * Login to Github
+  * Open repository
+  * Click fork button in the top right corner.
+
+### How to clone 
+  * Login to Github
+  * Open repository 
+  * Click on the 'code' button, select which you would like with HTTPS, SSH or GitHib CLI and copy
+  * Open terminal in code editor and change the current directory to the location you want to use is
+  * Type 'git clone' and paste link that you copied in step 3, press enter
 
 
 
