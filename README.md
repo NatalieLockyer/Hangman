@@ -77,20 +77,20 @@ Hang Man is a word guessing game, based on the original 'Hangman'. The game has 
 ### User Stories
 As a site visitor,
 
-  * I want to play interactive game.
-  * Initially a red button with run program and a large black screen underneath appear.
+  * I want to play an interactive game.
+  * Initially a red button with 'run program' and a large black screen underneath appear.
   * When the run program button is selected I can see the title 'Hangman'.
   * I am given 4 choices of what I would like to do, 
     + 1 - Start Game
     + 2 - Game Instructions
     + 3 - Scoreboard
     + 4 - Exit Game
-  * I start with 1, When I enter 1, I am asked for my name, Once I enter this I am taken to a new screen where I can see the hang man stand and a number of underscores relating to the secret word. 
-  * I guess a letter and its correct. The letter replaces the underscore in the word and I can guess another letter.
+  * I start with 1, When I enter 1, I am asked for my name. Once I enter this I am taken to a new screen where I can see the hangman stand and a number of underscores relating to the secret word. 
+  * I guess a letter and it is correct. The letter replaces the underscore in the word and I can guess another letter.
   * I duplicate this letter and recieve a message explaining that I have already used this letter.
   * I guess another letter incorrectly and a life is lost. This appears on the hang man diagram.
-  * Once I have used up all my lives, I recieve a message telling me as such. I am then asked if I want to play again (Y or N), I click Y, this asks me for my name again and the game will restart on a new screen.
-  * Once I guess all the letters correctly, I receive a messageg telling me as such. I am then asked if I wish to play again this time I select N and I return to the main menu. 
+  * Once I have used up all my lives, I recieve a message telling me I have used my lives and the game is over. I am then asked if I want to play again (Y or N), I click Y, the game will restart on a new screen.
+  * Once I guess all the letters correctly, I receive a message telling me I have won. I am then asked if I would like to play again. This time I select N and I return to the main menu. 
   * I would like to see how many guesses it took to win on the previous game. I press 3 on the main page and this takes me onto a new page called Score Board. I can see how many guesses this last game took me and I can see other users game information too. I then press ENTER to return to the main menu.
   * I then select option 2, this takes me to a new screen and shows me the 'rules' of the game. Once I have read them I click ENTER and I am taken back to the main page.
   * I then select option 4, this exits me out of the game.
@@ -106,7 +106,7 @@ I have created this flow chart diagram on Lucid Charts. This was used to help wi
 
 ## Typography
 
-For the main titles on the page, I used Figlet. I initally chose a font called 'acrobatic' which was letter made up from small stick figures. When I ran this in the terminal, the font was far to big. I wasnt able to reduce the size of the font. 
+For the main titles on the page, I used Figlet. I initally chose a font called 'acrobatic' which was letters made up from small stick figures. When I ran this in the terminal, the font was far too big. I wasn't able to reduce the size of the font. 
 I then opted for a font called 'Banner', the titles now sit nicely on the page. I have also centered them using justify-centre.
 This image was extracted from the [Figlet webpage](www.figlet.org/examples)
 
@@ -128,7 +128,7 @@ The user is able to chose which option by selecting one of these numbers from th
 
 ### Game Instructions Page
 
-When the user selections option 2, they will see a new screen with the game instuctions. Once the user has finished with this they can hit enter to return to the main screen. 
+When the user selects option 2, they will see a new screen with the game instuctions. Once the user has finished with this they can hit enter to return to the main screen. 
 
 <p align="center">
 <img src="./assets/images/readme_imgs/game_instructions.png">
@@ -136,7 +136,7 @@ When the user selections option 2, they will see a new screen with the game inst
 
 ### Scoreboard Page
 
-When the user selections option 3, they will see a new screen with the scoreboard. This is updated when a player completes a winning game. The user can also see the scores of other players and the scores are in acending order.
+When the user selects option 3, they will see a new screen with the scoreboard. This is updated when a player completes a winning game. The user can also see the scores of other players and the scores are in ascending order.
 
 <p align="center">
 <img src="./assets/images/readme_imgs/score_board.png">
@@ -150,7 +150,7 @@ Updated Page - The scoreboard is updated with any winning games.
 
 ### Exit Page
 
-If the user does not wish to play the game at all, they can simple select option 4 which will exit the game, there is a confirmation message saying "Goodbye".
+If the user does not wish to play the game at all, they can simply select option 4 which will exit the game, there is a confirmation message saying "Goodbye".
 
 <p align="center">
 <img src="./assets/images/readme_imgs/exit_mainpage.png">
@@ -210,7 +210,7 @@ If the user selects Y to play again, a new screen will appear and a new game wil
 
 ### Win Screen Page
 
-If the user guesses all the letters before the hangman is hung, the game is complete and the users wins. A message is displayed explaining that they have won and would they like to play again.
+If the user guesses all the letters before the hangman is hung, the game is complete and the user wins. A message is displayed explaining that they have won and would they like to play again?
 
 <p align="center">
 <img src="./assets/images/readme_imgs/winning_letter.png">
@@ -218,17 +218,17 @@ If the user guesses all the letters before the hangman is hung, the game is comp
 
 ### Goodbye Page
 
-If the user chooses not to play again this time, they select N and the game with exit with the message "Thank you for playing, I hope you enjoyed it!"
+If the user chooses not to play again this time, they select N and the game will exit with the message "Thank you for playing, I hope you enjoyed it!"
 
 <p align="center">
 <img src="./assets/images/readme_imgs/playagain_no.png">
 </p>
 
 ### Future Features
-In the futures I would like to add the following features:
+In the future I would like to add the following features:
 
 * I would like to add a frame and colours to make the game look more appealing
-* I would like users to be able to create an account so that each time they play on the game they can input their login in details.
+* I would like users to be able to create an account so that each time they play on the game they can input their login details.
 * To add a defensive question when a player selects Y to exit, "Are you sure you want to exit Y or N?"
 
 ## Technologies Used
@@ -252,8 +252,8 @@ In the futures I would like to add the following features:
 * [Figlet](https://pypi.org/project/pyfiglet/) was imported to amend the font style
 
 Third party python modules that were imported and used are:
-* gspread was imported and this library of code was used to access and update the data in the spreadshhet
-* google.oauth2.service_account was used to authorise the connecion with Google Sheets API. 
+* gspread was imported and this library of code was used to access and update the data in the spreadsheet.
+* google.oauth2.service_account was used to authorise the connection with Google Sheets API. 
 
 ### My Python Files
 * 'hangman_tries' is a file where the structure of the hangman and the lives lost diagrams are stored. This has been imported to the run.py sheet.
@@ -265,19 +265,19 @@ Third party python modules that were imported and used are:
 
 PEP 8 is a style guide for python.
 
-The result of my page was clear, no errors found when page run through the CI Python Linter
+The result of my page was clear, no errors found when page run through the CI Python Linter.
 
 <p align="center">
 <img src="./assets/images/readme_imgs/pythonlinter_mainpy.png">
 </p>
 
-The result of my page was clear, no errors found when page run through the CI Python Linter
+The result of my page was clear, no errors found when page run through the CI Python Linter.
 
 <p align="center">
 <img src="./assets/images/readme_imgs/pythonlinter_hangmanpy.png">
 </p>
 
-The result of my page was clear, no errors found when page run through the CI Python Linter
+The result of my page was clear, no errors found when page run through the CI Python Linter.
 
 <p align="center">
 <img src="./assets/images/readme_imgs/pythonlinter_wordspy.png">
@@ -306,7 +306,7 @@ The result of my page was clear, no errors found when page run through the CI Py
 
 ### Bugs
 
-* Initially I couldnt get the Hangman to display in the correct order. After playing about and trying numerous ways around it, I discovered that if i displayed the images back to front they came out in order. 
+* Initially I couldnt get the Hangman to display in the correct order. After playing about and trying numerous ways around it, I discovered that if i displayed the images back to front they came out in the correct order. 
 
 * When running the game in the terminal, I was expecting the scoreboard to be updated with the username, however it was inputting the secret word. There was an error in my code and a quick edit sorted this issue.   
 
@@ -372,5 +372,5 @@ Slack - Was use to troubleshoot ideas with my CI colleagues
 
 ## Acknowledgements
  * I would like to thank my mentor Spencer Barriball for his help, guidance and feedback throughout this project.
- * I would like to thank my colleagues on Slack who provide help, support and essential feedback.
+ * I would like to thank my colleagues on Slack who provided help, support and essential feedback.
  * Finally I would like to thank my husband and daughter for always pushing me, supporting me and allowing me the time to code.
