@@ -49,7 +49,7 @@ function socket() {
     });
 }
 
-if (process.env.CREDS != null) {
+if (process.env.CREDS1 != null) {
     console.log("Creating creds.json file.");
     fs.writeFile('creds.json', process.env.CREDS, 'utf8', function (err) {
         if (err) {
