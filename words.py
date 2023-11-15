@@ -81,7 +81,7 @@ secret_word_list = [
     "urgent",
     "unique",
     "vacant",
-    "values", 
+    "values",
     "valley",
     "verify",
     "weekly",
