@@ -28,7 +28,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file('creds1.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hangman_leaderboard')
@@ -161,7 +161,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
     if there is a duplicate letter - print - already been chosen 
     wrong letter - print - incorrect letter
     correct letter - print - correct letter
-    Also includes a win message and lose message. 
+    Also includes a win message & lose message. 
     Asks the player if they wish to play again
     """
     global guesses
