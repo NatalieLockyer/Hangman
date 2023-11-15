@@ -37,16 +37,15 @@ Hang Man is a word guessing game, based on the original 'Hangman'. The game has 
     + [My Python Files ](#my-python-files)
 + [Testing](#testing)
   + [Code Validation](#code-validation)
-  + [Full Testing ]
-  + [Bugs ]
+  + [Full Testing](#full-testing)
+  + [Bugs](#bugs)
+  + [Supported Browsers](#supported-browsers)
  + [Deployment and Local Deployment](#deployment-and-local-deployment)
   + [Deployment](#deployment)
   + [Local Deployment](#local-deployment)
   + [How to Clone](#how-to-clone)
-+ [Credits ]
-  + [Code ]
-  + [Media ]
-  + [Acknowledgements ]
++ [Credits](#credits)
++ [Acknowledgement](#acknowledgements)
 
 ***
 ***
@@ -285,8 +284,43 @@ The result of my page was clear, no errors found when page run through the CI Py
 </p>
 
 
-bugs etc
+### Full Testing
 
+| Feature      | Expected Outcome | Testing Performed    | Result | Pass or Fail |
+|   :---       |      :----:      |        :----:        | :----: |    :----:    |
+|      |                  |                      |        |              |
+|Select webpage link      | Page Loads       |Select 'RUN PROGRAM'  | Page Loads |   PASS      |
+|Select Option 1|New game starts <br> and user asked <br> to enter name | Press Key 1 | Game starts <br> asks for user <br> to enter name | PASS|
+|Select Option 2|New screen with <br> game instructions| Press Key 2 | New screen loads <br> game instructions appear  |PASS      |
+|Whilst in game instructions <br> press ENTER to return <br> to main page |  Return to main page  | Press ENTER    | Return to main page | PASS             |
+|Select Option 3|New screen with <br> scoreboard| Press Key 3 | New screen loads <br> scoreboard appears    |  PASS            |
+|Whilst in scoreboard <br> press ENTER to return <br> to main page |  Return to main page  | Press ENTER     | Return to main page | PASS             |
+|Select Option 4|Game will exit <br> displaying message 'Goodbye' | Press Key 4 | Exit game with 'Goodbye' message  | PASS              |
+|    |                  |                      |        |              |
+|In new Game <br> Select correct letter <br> in word | Letter is in the word <br> places letter in word and <br> removes underscore| Enter a letter     | Letter appears and in place   | Pass              |
+|In Game <br> Select incorrect letter <br> in word | Message advising that <br> letter isnt in the word <br> select another letter| Enter a letter     | Mesage apears Select another letter  | Pass              |
+|In Game <br> Select incorrect letter <br> life lost | Hangman stage added | Enter incorrect a letter     | Hangman stage added  | Pass              |
+|In Game <br> Select anything other <br> than a letter | Message advising of <br> invalid selection <br> try again| Enter a ?   | Message appears   | Pass              |
+|Play again option| User can choose Y or N to play again <br> Y = Start new game <br> N - Exit Game    | Pressed Y <br> Pressed N   |Y - New Game started <br> N = Game ends |PASS |
+|      |                  |                      |        |              |
+
+### Bugs
+
+* Initially I couldnt get the Hangman to display in the correct order. After playing about and trying numerous ways around it, I discovered that if i displayed the images back to front they came out in order. 
+
+* When running the game in the terminal, I was expecting the scoreboard to be updated with the username, however it was inputting the secret word. There was an error in my code and a quick edit sorted this issue.   
+
+* Heroku Bug - when deploying my page to Heroku, I was met with a large error message. Having spoken with a tutor for some guidance, we discovered that a number of the main json file names were incorrect, this was changed and the error message went. 
+
+
+There are no bugs remaining.
+
+### Supported Browsers
+
+* Chrome
+* Firefox
+* Safari
+* Edge
 
 
 ## Deployment and Local Deployment
@@ -327,5 +361,16 @@ After the initial account setup
   * Open terminal in code editor and change the current directory to the location you want to use is
   * Type 'git clone' and paste link that you copied in step 3, press enter
 
+## Credits
 
+[Love Sandwiches CI Walk through Project](https://learn.codeinstitute.net/ci_program/diplomainfullstacksoftwarecommoncurriculum) - Code was adatpted from the CI love sandwiches project. 
+[You-Tube Tutorial](https://www.youtube.com/watch?v=m4nEnsavl6w) - I watched this tutorial and adapted some of the code for my own project. 
+[W3Schools](https://www.w3schools.com/) - was used as a refresher to explain loops/while loops when I was unsure why my code wasnt working.
+[Figlet](www.figlet.org/examples) - was used to change the font of my titles.
+[Python](#https://www.python.org/about/help/) was used as a general source of knowledge
+Slack - Was use to troubleshoot ideas with my CI colleagues
 
+## Acknowledgements
+ * I would like to thank my mentor Spencer Barriball for his help, guidance and feedback throughout this project.
+ * I would like to thank my colleagues on Slack who provide help, support and essential feedback.
+ * Finally I would like to thank my husband and daughter for always pushing me, supporting me and allowing me the time to code.
