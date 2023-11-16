@@ -1,7 +1,7 @@
 # [Hangman Game](https://hang-man2023-457c30e677c0.herokuapp.com/)
 (Developer: Natalie Lockyer)
 
-Hang Man is a word guessing game, based on the original 'Hangman'. The game has been designed to give users a limited number of lives to guess the secret word. The secret word is displayed as underscores ( _ _ _ ) .When a player guesses the letter correctly, the letter appears in the word which is displayed under the diagram. If they guess the letter in correctly, a life will be lost and a part of the stick man will dispaly on the diagram. Once the game has finished users will be given the oppurtunity to play again.
+Hangman is a word guessing game, based on the original 'Hangman'. The game has been designed to give users a limited number of lives to guess the secret word. The secret word is displayed as underscores ( _ _ _ ) .When a player guesses the letter correctly, the letter appears in the word which is displayed under the diagram. If they guess the letter incorrectly, a life will be lost and a part of the stick man will dispaly on the diagram. Once the game has finished users will be given the oppurtunity to play again.
 
 ## Demo
 [To view live website, click here](https://hang-man2023-457c30e677c0.herokuapp.com/)
@@ -18,9 +18,9 @@ Hang Man is a word guessing game, based on the original 'Hangman'. The game has 
     + [User Requirements and Expectations](#user-requirements-and-expectations)
     + [User Stories](#user-stories)
     + [Lucid Chart](#lucid-chart)
-+ [Design]
++ [Design](#design)
     + [Typography ](#typography)
-+ [Features]
++ [Features](#features)
      + [Main Start Page](#main-start-page)
      + [Game Instructions Page](#game-instructions-page)
      + [Scoreboard Page](#scoreboard-page)
@@ -57,7 +57,7 @@ Hang Man is a word guessing game, based on the original 'Hangman'. The game has 
 * The functionality of the game should keep to the core concepts of Hangman.
 * The user should be able to navigate around this easily. 
 * On the loading screen, the user is able to choose options to either, start the game, read the game instructions, view the scoreboard, or exit the game. 
-* Add username and amount of guesses taken to google sheets so the score board is updated.
+* Add the username and amount of guesses taken, to google sheets so the score board is updated.
 * At the end of the game the user is able to choose if they wish to play again, or exit the game.
 
 ### Target Audience
@@ -70,7 +70,7 @@ Hang Man is a word guessing game, based on the original 'Hangman'. The game has 
   * The ability to personalise the game by adding your name.
   * A fun and interactive game that is appealing and well structured and has clear navigation options.
   * Users are able to find instructions on how to play if they are not familiar with the game, and given the time they need to read this.
-  * To be able to view the scoreboard, which is linked to google sheets to see the list of how many guesses it has taken them and other users.
+  * To be able to view the scoreboard, which is linked to google sheets to see a list of how many guesses it has taken them and other users.
   * Users to recieve feedback throughout the game, whether this is that they have dulplicated a letter, the user has won or the user has lost the game. 
   * Users are able to select Y or N if they wish to play again. If no the player will be taken back to the main menu. 
     
@@ -79,17 +79,17 @@ As a site visitor,
 
   * I want to play an interactive game.
   * Initially a red button with 'run program' and a large black screen underneath appear.
-  * When the run program button is selected I can see the title 'Hangman'.
+  * When the 'run program' button is selected I can see the title 'Hangman'.
   * I am given 4 choices of what I would like to do, 
     + 1 - Start Game
     + 2 - Game Instructions
     + 3 - Scoreboard
     + 4 - Exit Game
-  * I start with 1, When I enter 1, I am asked for my name. Once I enter this I am taken to a new screen where I can see the hangman stand and a number of underscores relating to the secret word. 
+  * I start with 1, When I enter 1, I am asked for my name. If I dont enter any character in the username, I get an invalid entry message. I then enter my name and I am taken to a new screen where I can see the hangman stand and a number of underscores relating to the secret word.
   * I guess a letter and it is correct. The letter replaces the underscore in the word and I can guess another letter.
   * I duplicate this letter and recieve a message explaining that I have already used this letter.
   * I guess another letter incorrectly and a life is lost. This appears on the hang man diagram.
-  * Once I have used up all my lives, I recieve a message telling me I have used my lives and the game is over. I am then asked if I want to play again (Y or N), I click Y, the game will restart on a new screen.
+  * Once I have used up all my lives, I recieve a message telling me I have used my lives and the game is over. I am then asked if I want to play again (Y or N), I click Y, the game restarts on a new screen.
   * Once I guess all the letters correctly, I receive a message telling me I have won. I am then asked if I would like to play again. This time I select N and I return to the main menu. 
   * I would like to see how many guesses it took to win on the previous game. I press 3 on the main page and this takes me onto a new page called Score Board. I can see how many guesses this last game took me and I can see other users game information too. I then press ENTER to return to the main menu.
   * I then select option 2, this takes me to a new screen and shows me the 'rules' of the game. Once I have read them I click ENTER and I am taken back to the main page.
@@ -297,10 +297,10 @@ The result of my page was clear, no errors found when page run through the CI Py
 |Whilst in scoreboard <br> press ENTER to return <br> to main page |  Return to main page  | Press ENTER     | Return to main page | PASS             |
 |Select Option 4|Game will exit <br> displaying message 'Goodbye' | Press Key 4 | Exit game with 'Goodbye' message  | PASS              |
 |    |                  |                      |        |              |
-|In new Game <br> Select correct letter <br> in word | Letter is in the word <br> places letter in word and <br> removes underscore| Enter a letter     | Letter appears and in place   | Pass              |
-|In Game <br> Select incorrect letter <br> in word | Message advising that <br> letter isnt in the word <br> select another letter| Enter a letter     | Mesage apears Select another letter  | Pass              |
-|In Game <br> Select incorrect letter <br> life lost | Hangman stage added | Enter incorrect a letter     | Hangman stage added  | Pass              |
-|In Game <br> Select anything other <br> than a letter | Message advising of <br> invalid selection <br> try again| Enter a ?   | Message appears   | Pass              |
+|In new Game <br> Select correct letter <br> in word | Letter is in the word <br> places letter in word and <br> removes underscore| Enter a letter     | Letter appears and in place   | PASS              |
+|In Game <br> Select incorrect letter <br> in word | Message advising that <br> letter isnt in the word <br> select another letter| Enter a letter     | Mesage apears Select another letter  | PASS              |
+|In Game <br> Select incorrect letter <br> life lost | Hangman stage added | Enter incorrect a letter     | Hangman stage added  | PASS             |
+|In Game <br> Select anything other <br> than a letter | Message advising of <br> invalid selection <br> try again| Enter a ?   | Message appears   | PASS              |
 |Play again option| User can choose Y or N to play again <br> Y = Start new game <br> N - Exit Game    | Pressed Y <br> Pressed N   |Y - New Game started <br> N = Game ends |PASS |
 |      |                  |                      |        |              |
 
@@ -363,11 +363,11 @@ After the initial account setup
 
 ## Credits
 
-[Love Sandwiches CI Walk through Project](https://learn.codeinstitute.net/ci_program/diplomainfullstacksoftwarecommoncurriculum) - Code was adatpted from the CI love sandwiches project. 
-[You-Tube Tutorial](https://www.youtube.com/watch?v=m4nEnsavl6w) - I watched this tutorial and adapted some of the code for my own project. 
-[W3Schools](https://www.w3schools.com/) - was used as a refresher to explain loops/while loops when I was unsure why my code wasnt working.
-[Figlet](www.figlet.org/examples) - was used to change the font of my titles.
-[Python](#https://www.python.org/about/help/) was used as a general source of knowledge
+* [Love Sandwiches CI Walk through Project](https://learn.codeinstitute.net/ci_program/diplomainfullstacksoftwarecommoncurriculum) - Code was adatpted from the CI love sandwiches project. 
+* [You-Tube Tutorial](https://www.youtube.com/watch?v=m4nEnsavl6w) - I watched this tutorial and adapted some of the code for my own project. 
+* [W3Schools](https://www.w3schools.com/) - was used as a refresher to explain loops/while loops when I was unsure why my code wasnt working.
+* [Figlet](www.figlet.org/examples) - was used to change the font of my titles.
+* [Python](#https://www.python.org/about/help/) was used as a general source of knowledge
 Slack - Was use to troubleshoot ideas with my CI colleagues
 
 ## Acknowledgements

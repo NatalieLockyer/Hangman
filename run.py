@@ -79,7 +79,7 @@ def game_instructions():
     """
     clear()
     print(font.renderText('RULES'))
-    print("\nHang Man is a word guessing game.")
+    print("\nHangan is a word guessing game.")
     print("\nThe object of the game is to guess the secret")
     print("word, before the stick figure is hung.")
     print("\nYou will select letters from your keyboard to try and ")
@@ -178,6 +178,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
         guess = input("\nPlease select a letter:\n").lower()
 
         if len(guess) == 1 and guess.isalpha():
+            guesses += 1
             if guess in guessed_letters:
                 print("\nYou have already guessed the letter", guess)
             elif guess not in secret_random_word:
@@ -187,7 +188,6 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
             else:
                 print("\nWell done", guess, "is in the word.")
                 guessed_letters.append(guess)
-                guesses += 1
                 if all(
                     letter in guessed_letters for
                         letter in secret_random_word):
@@ -207,6 +207,7 @@ def guess_the_letter(username, guessed_letters, secret_random_word):
         play_again = input("\nDo you want to play again? Y or N\n").lower()
         if play_again == "y":
             clear()
+            guesses = 0
             start_game()
             break
         elif play_again == "n":
@@ -228,7 +229,7 @@ def start_game():
     This function is called when the user is asked if they
     wish to play again, if they select Y this function will
     be called.
-    """
+    """    
     welcome()
     secret_random_word = select_random_word(secret_word_list)
     guessed_letters = []
